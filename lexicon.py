@@ -1,8 +1,8 @@
 lexicon = {
 
     # 
-    "she": {"mr": "ती", "gender": "F", "number": "sg"},
-    "he": {"mr": "तो", "gender": "M", "number": "sg"}, 
+    "she": {"mr": "ती", "gender": "F", "number": "sg" , "person" : "tp"},
+    "he": {"mr": "तो", "gender": "M", "number": "sg", "person" : "tp"} ,
     "apple": {"mr": "सफरचंद", "pos": "N"},
     "water": {"mr": "पाणी", "pos": "N"},
 
