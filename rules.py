@@ -17,14 +17,17 @@ def to_mr(tokens):
     verb = lexicon.get(verb_en)
     obj = lexicon.get(obj_en)
 
+
     sub_mr = sub["mr"]
+    plural = sub["number"]
+    person = sub["person"]
+    
     obj_mr = obj['mr']
 
     verb_rt = verb['root']
     gender = sub['gender']
     tense = verb["tense"]
 
-    verb_mr = inflect_verb(verb_rt , gender , tense)
+    verb_mr = inflect_verb(verb_rt , person , plural, gender , tense)
 
     return f"{sub_mr} {obj_mr} {verb_mr}"
-
