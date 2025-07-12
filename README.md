@@ -1,74 +1,48 @@
-# MaTra: Marathi Translator – A Hybrid Machine Translation System
 
-**MaTra** is a lightweight hybrid machine translation system designed for translating simple English sentences into grammatically correct Marathi. It combines rule-based syntactic transformation with a machine-learned morphological inflector to ensure accurate subject-verb agreement, tense handling, and pronoun generation.
+# Marathi FST-Based English-to-Marathi Translator
+
+A rule-based system that performs syntactic and morphological translation from English to Marathi using a finite-state-like architecture. This system focuses on SVO (subject-verb-object) structures and demonstrates verb inflection via morphosyntactic features.
+
+---
+
+## Project Goals
+
+- Demonstrate a lightweight rule-based NLP pipeline for English-to-Marathi translation.
+- Handle morphological inflection of verbs using machine learning-based suffix prediction.
+- Explore the potential of language technology for low-resource Indic languages.
+
+---
 
 ## Features
 
-- Rule-based SVO-to-SOV sentence restructuring
-- Tense detection using spaCy-based POS tagging
-- Decision Tree–based morphological inflector for Marathi verbs and pronouns
-- Modular and interpretable design
-- Clean dataset for training and evaluating inflection rules
+- Subject-verb-object structure parsing via SpaCy
+- Morphological inflection of Marathi verbs using person, number, gender, tense
+- Dictionary-based mapping (lexicon) for subject/object terms
+- Extendable to other syntactic structures
 
-## Motivation
-
-Marathi is a morphologically rich and low-resource language. Most neural MT systems struggle with accurate agreement handling in such languages, especially without large corpora. MaTra aims to provide a transparent, controllable translation pipeline that prioritizes grammatical accuracy over black-box fluency.
-
-## System Architecture
-
-1. **Input Parsing**: English sentence is parsed using spaCy to extract subject, verb, object, and tense.
-2. **Syntactic Reordering**: Converts the sentence to Marathi structure (Subject–Object–Verb).
-3. **Morphological Inflection**: Applies a trained Decision Tree model to inflect the verb root and generate the correct pronoun.
-4. **Output Generation**: Final sentence is assembled from the components.
+---
 
 ## Example
 
-**Input:**  
-`She eats apples.`
+**Input:** `She eats apple.`  
+**Output:** `ती सफरचंद खाते`
 
-**Output:**  
-`ती सफरचंद खाते`
+---
 
-## Getting Started
-
-### Requirements
-
-- Python 3.8+
-- scikit-learn
-- pandas
-- spaCy (`en_core_web_sm` model)
+## Requirements
 
 ```bash
 pip install -r requirements.txt
-python -m spacy download en_core_web_sm
 ````
 
-### Running the System
+Key packages:
 
-```bash
-python main.py
-```
+* `spaCy`
+* `scikit-learn`
+* `numpy`, `pickle`
 
-## Dataset
+---
 
-The morphological inflection model is trained on a manually curated CSV dataset with features:
+## References
+* [SpaCy Dependency Parsing](https://spacy.io/usage/linguistic-features#dependency-parse)
 
-* Person (0/1/2)
-* Number (Singular/Plural)
-* Gender (Masc/Fem/Neut)
-* Tense (Present/Past/Future)
-
-Each row maps these features to the correct Marathi pronoun and verb suffix.
-
-
-## Future Work
-
-* Extend tense support (progressive, perfect, perfect-progressive)
-* Handle compound and complex sentences
-* Add support for postpositions and determiners
-* Build a web interface or CLI tool for public use
-* Inflection based on Intransitive verbs
-
-## License
-
-This project is released under the MIT License.
